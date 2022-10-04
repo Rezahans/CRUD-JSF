@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"> 
+    <h:head>
+        <title>HanHans Official</title>
+        <style>
+            .table{
+                
+                border :dashed;
+                background-color: #fefefe;
+                margin: 5% auto 15%;
+                border: 1px solid #888;
+                width: 50%;
+                text-align: left;
+                
+            }
+          
+        </style>
+    </h:head>
+    <h:body>
+        <h:form class="table">
+            <h2>Tabel Data Mahasiswa</h2>
+            <h:dataTable class="table" border="2" cellspacing="1" cellpadding="1" var="mhs" value="#{controlBean.mahasiswaList}" >
+                <h:column>
+                    <f:facet name="header">SCODE</f:facet>
+                    #{mhs.scode}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Nama</f:facet>  
+                    #{mhs.nama}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Select</f:facet>
+                    <h:commandButton value="Select" action="#{controlBean.setMahasiswa(mhs)}"/>
+          
+                </h:column>
+            </h:dataTable>
+            <hr/>
+            <h2>
+                Action Data Mahasiswa
+            </h2>
+            <h:inputText style="color: blue" a:placeholder="SCODE" value="#{controlBean.mahasiswa.scode}"/><br/>
+            <h:inputText style="color: blue"  a:placeholder="Nama Mahasiswa" value="#{controlBean.mahasiswa.nama}"/>&nbsp;
+            <h:commandButton style=" color: red" value="Add" action="#{controlBean.insert()}"/>&nbsp;
+            <h:commandButton style="color: red" value="Edit" action="#{controlBean.upadet()}"/>&nbsp;
+            <h:commandButton  style=" color: red" value="Delete" action="#{controlBean.delete()}"/>&nbsp;
+            <hr/>
+        </h:form>
+    </h:body>
+</html>
+
+
